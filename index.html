@@ -1,41 +1,110 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+
     <title>Mod4-SBA | Task Management</title>
   </head>
+
   <body class="container d-flex flex-column align-items-center mt-5">
     <h1>Task Management App</h1>
-    <p>Enter the name of your task, a category, due date and status</p>
-    <form id="form" class="container d-flex flex-column align-items-center mt-3">
-      <input type="text" placeholder="e.g. grocery shopping" id="task-name"
-      class="mb-2 col-6" value="grocery shopping"/ >
+    <p>Enter the name of your task, a category, due date, and status</p>
+
+    <!-- FORM -->
+    <form
+      id="form"
+      class="container d-flex flex-column align-items-center mt-3"
+    >
+      <!-- Task Name -->
       <input
         type="text"
-        placeholder="e.g. chores"
-        id="category"
+        id="task-name"
         class="mb-2 col-6"
+        placeholder="e.g. grocery shopping"
         required
       />
+
+      <!-- Category -->
+      <fieldset class="mb-2 col-6">
+        <legend class="fs-5 fw-bold">Select a category:</legend>
+
+        <div>
+          <input type="checkbox" id="category-work" />
+          <label for="category-work">Work</label>
+        </div>
+
+        <div>
+          <input type="checkbox" id="category-home" />
+          <label for="category-home">Home</label>
+        </div>
+
+        <div>
+          <input type="checkbox" id="category-personal" />
+          <label for="category-personal">Personal</label>
+        </div>
+      </fieldset>
+
+      <!-- Deadline -->
+      <small>Select a due date</small>
       <input type="date" id="deadline" class="mb-2 col-6" required />
-      <input
-        type="text"
-        placeholder="e.g. complete"
-        id="status"
-        class="mb-2 col-6"
-        required
-      />
-      <button class="mb-2 col-6" type="submit" id="add-task-btn">
+
+      <!-- Status -->
+      <fieldset class="mb-2 col-6">
+        <legend class="fs-5 fw-bold">Select a status:</legend>
+
+        <div>
+          <input type="radio" id="status-in-progress" name="status" checked />
+          <label for="status-in-progress">In Progress</label>
+        </div>
+
+        <div>
+          <input type="radio" id="status-completed" name="status" />
+          <label for="status-completed">Completed</label>
+        </div>
+      </fieldset>
+
+      <!-- Submit -->
+      <button class="mb-3 col-6" type="submit" id="add-task-btn">
         Add Task
       </button>
     </form>
+
+    <!-- FILTERS -->
+    <div class="col-6 mt-3">
+      <h2 class="fs-5 fw-bold">Filter Tasks</h2>
+
+      <div>
+        <input type="checkbox" id="filter-in-progress" />
+        <label for="filter-in-progress">In Progress</label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="filter-completed" />
+        <label for="filter-completed">Completed</label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="filter-overdue" />
+        <label for="filter-overdue">Overdue</label>
+      </div>
+    </div>
+
+    <!-- CLEAR ALL -->
+    <button id="clear-tasks-btn" class="mb-3 col-6" type="button">
+      Clear All Tasks
+    </button>
+
+    <!-- TASK LIST -->
+    <ul id="taskList" class="col-6 mt-3"></ul>
+
     <script src="scripts.js"></script>
   </body>
 </html>
